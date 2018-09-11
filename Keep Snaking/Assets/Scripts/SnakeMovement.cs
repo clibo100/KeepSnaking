@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SnakeMovement : MonoBehaviour {
 
@@ -15,29 +16,76 @@ public class SnakeMovement : MonoBehaviour {
     public float speed = 1;
     public float rotationspeed = 50;
 
+    public float TimeFromLastRetry;
+
+    //public Text currScore;
+    //public Text scoreText;
+
     public GameObject bodyprefab;
 
     private float distance;
     private Transform currBodyPart;
     private Transform prevBodyPart;
 
+    //public GameObject deathscreen;
+
+    public bool isAlive;
+
 	// Use this for initialization
-	void Start () {
-		for (int i = 0; i < beginsize - 1; ++i)
+	void Start ()
+    {
+        StartLevel();
+	}
+
+    public void StartLevel()
+    {
+        TimeFromLastRetry = Time.time;
+
+        //deathscreen.SetActive(false);
+
+        for (int i = BodyParts.Count - 1; i > 1; --i)
+        {
+            Destroy(BodyParts[i].gameObject);
+
+            BodyParts.Remove(BodyParts[i]);
+        }
+
+
+        BodyParts[0].position = new Vector3(0, 0.1f, 0);
+
+        BodyParts[0].rotation = Quaternion.identity;
+
+        //currScore.gameObject.SetActive(true);
+
+        //currScore.text = "Score: 0";
+
+        isAlive = true;
+
+
+        for (int i = 0; i < beginsize - 1; ++i)
         {
             AddBodyPart();
         }
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        Move();
+        if (isAlive)
+        {
+            Move();
+        }
 
         if(Input.GetKeyDown(KeyCode.Q))
         {
             AddBodyPart();
         }
-	}
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            StartLevel();
+        }
+    }
 
     public void Move()
     {
@@ -86,6 +134,18 @@ public class SnakeMovement : MonoBehaviour {
         newpart.SetParent(transform);
 
         BodyParts.Add(newpart);
+
+        //currScore.text = "Score: " + (BodyParts.Count - beginsize).ToString();
     }
 
+    public void Die()
+    {
+        isAlive = false;
+
+        //scoreText.text = "Your Score: " + (BodyParts.Count - beginsize).ToString();
+
+        //currScore.gameObject.SetActive(false);
+
+        //deathscreen.SetActive(true);
+    }
 }
