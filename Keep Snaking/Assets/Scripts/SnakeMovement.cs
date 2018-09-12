@@ -39,6 +39,8 @@ public class SnakeMovement : MonoBehaviour {
 
     public void StartLevel()
     {
+        isAlive = true;
+
         TimeFromLastRetry = Time.time;
 
         //deathscreen.SetActive(false);
@@ -59,13 +61,15 @@ public class SnakeMovement : MonoBehaviour {
 
         //currScore.text = "Score: 0";
 
-        isAlive = true;
+        
 
 
         for (int i = 0; i < beginsize - 1; ++i)
         {
             AddBodyPart();
         }
+
+        //BodyParts[0].position = new Vector3(0, 0.1f, 0);
 
     }
 	
