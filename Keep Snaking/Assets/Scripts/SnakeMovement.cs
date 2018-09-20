@@ -53,7 +53,7 @@ public class SnakeMovement : MonoBehaviour {
         }
 
 
-        BodyParts[0].position = new Vector3(0, 0.16f, 0);
+        BodyParts[0].position = new Vector3(8, 0.16f, -2);
 
         BodyParts[0].rotation = Quaternion.identity;
 
@@ -69,7 +69,7 @@ public class SnakeMovement : MonoBehaviour {
             AddBodyPart();
         }
 
-        BodyParts[0].position = new Vector3(2, 0.16f, 0);
+        BodyParts[0].position = new Vector3(10, 0.16f, -2);
 
     }
 	

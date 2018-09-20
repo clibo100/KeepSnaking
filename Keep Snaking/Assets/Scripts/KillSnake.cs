@@ -23,7 +23,7 @@ public class KillSnake : MonoBehaviour
         {
             if (collision.transform != movement.BodyParts[1] && movement.isAlive)
             {
-                if(Time.time - movement.TimeFromLastRetry > 2)
+                if(Time.time - movement.TimeFromLastRetry > 1)
                 {
                     Debug.Log("collision with smth");
                     movement.Die();
