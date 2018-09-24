@@ -12,7 +12,7 @@ public class SpawnObject : MonoBehaviour
 
     public char keybind;
 
-    public GameObject foodPrefab;
+    public GameObject objectPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -45,7 +45,7 @@ public class SpawnObject : MonoBehaviour
 
             Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), Random.Range(-size.z / 2, size.z / 2));
 
-            Instantiate(foodPrefab, pos, Quaternion.identity);
+            Instantiate(objectPrefab, pos, Quaternion.identity);
         }
     }
 

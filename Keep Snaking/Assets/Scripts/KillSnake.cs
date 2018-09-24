@@ -6,7 +6,7 @@ public class KillSnake : MonoBehaviour
 {
     public SnakeMovement movement;
 
-    public SpawnObject SO;
+    public GameManager gm;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -14,9 +14,12 @@ public class KillSnake : MonoBehaviour
         {
             movement.AddBodyPart();
 
+            gm.AddScore();
+            gm.AddCollected();
+
             Destroy(collision.gameObject);
 
-            SO.SpawnFood();
+            //SO.SpawnFood();
         }
 
         else

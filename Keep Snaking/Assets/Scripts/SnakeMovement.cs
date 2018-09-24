@@ -52,18 +52,10 @@ public class SnakeMovement : MonoBehaviour {
             BodyParts.Remove(BodyParts[i]);
         }
 
-
         BodyParts[0].position = new Vector3(8, 0.16f, -2);
 
         BodyParts[0].rotation = Quaternion.identity;
-
-        //currScore.gameObject.SetActive(true);
-
-        //currScore.text = "Score: 0";
-
         
-
-
         for (int i = 0; i < beginsize - 1; ++i)
         {
             AddBodyPart();
@@ -138,18 +130,10 @@ public class SnakeMovement : MonoBehaviour {
         newpart.SetParent(transform);
 
         BodyParts.Add(newpart);
-
-        //currScore.text = "Score: " + (BodyParts.Count - beginsize).ToString();
     }
 
     public void Die()
     {
         isAlive = false;
-
-        //scoreText.text = "Your Score: " + (BodyParts.Count - beginsize).ToString();
-
-        //currScore.gameObject.SetActive(false);
-
-        //deathscreen.SetActive(true);
     }
 }
