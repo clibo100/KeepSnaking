@@ -18,18 +18,15 @@ public class SnakeMovement : MonoBehaviour {
 
     public float TimeFromLastRetry;
 
-    //public Text currScore;
-    //public Text scoreText;
-
     public GameObject bodyprefab;
 
     private float distance;
     private Transform currBodyPart;
     private Transform prevBodyPart;
 
-    //public GameObject deathscreen;
-
     public bool isAlive;
+
+    public GameObject head;
 
 	// Use this for initialization
 	void Start ()
@@ -42,8 +39,6 @@ public class SnakeMovement : MonoBehaviour {
         isAlive = true;
 
         TimeFromLastRetry = Time.time;
-
-        //deathscreen.SetActive(false);
 
         for (int i = BodyParts.Count - 1; i > 1; --i)
         {
@@ -134,6 +129,7 @@ public class SnakeMovement : MonoBehaviour {
 
     public void Die()
     {
+        head.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         isAlive = false;
     }
 }
