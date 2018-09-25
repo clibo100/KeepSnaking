@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour {
         timer += Time.deltaTime;
         timerText.GetComponent<Text>().text = Mathf.Round(timer).ToString();
 
-        if (timerText.GetComponent<Text>().text == 30.ToString())
+        if (int.Parse(timerText.GetComponent<Text>().text) >= 30)
         {
             sm.Die();
         }
@@ -50,5 +50,15 @@ public class GameManager : MonoBehaviour {
 
             collected = 0;
         }
+    }
+
+    public void SpawnSingleFood()
+    {
+        spawnfood.SpawnSingleObject();
+    }
+
+    public void SpawnSingleObstacle()
+    {
+        spawnobstacles.SpawnSingleObject();
     }
 }
