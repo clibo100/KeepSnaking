@@ -10,8 +10,6 @@ public class SpawnObject : MonoBehaviour
 
     public int amount;
 
-    public char keybind;
-
     public GameObject objectPrefab;
 
     public GameObject snake;
@@ -24,20 +22,7 @@ public class SpawnObject : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (keybind == 'e')
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                SpawnFood();
-            }
-        }
-        else if (keybind == 'f')
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                SpawnFood();
-            }
-        }
+
 	}
 
     public void SpawnFood()

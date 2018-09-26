@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SnakeMovement : MonoBehaviour {
 
@@ -66,23 +67,13 @@ public class SnakeMovement : MonoBehaviour {
         {
             Move();
         }
-
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            AddBodyPart();
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            StartLevel();
-        }
     }
 
     public void Move()
     {
         float curspeed = speed;
 
-        if(Input.GetKey(KeyCode.W))
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             curspeed *= 2;
         }
@@ -131,5 +122,6 @@ public class SnakeMovement : MonoBehaviour {
     {
         head.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         isAlive = false;
+        SceneManager.LoadScene(2);
     }
 }
